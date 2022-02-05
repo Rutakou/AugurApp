@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#5f2652"
+    tools:context=".ui.login.Scommessa">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="30dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginTop="0dp"
+        android:layout_marginBottom="40dp"
+        android:orientation="vertical">
+        <ImageView
+            android:layout_width="180dp"
+            android:layout_height="180dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="48dp"
+            android:layout_marginBottom="16dp"
+            app:srcCompat="@drawable/logobitcoin" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardProf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            app:cardUseCompatPadding="true"
+            app:cardCornerRadius="4dp"
+            app:cardElevation="5dp"
+            android:color="@color/white">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/valorefuturo"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:hint="Valore futuro"
+                    android:textColor="#5F2652"
+                    android:textColorHighlight="#5f2652"
+                    android:textColorHint="#5f2652"
+                    android:textColorLink="#5f2652"
+                    app:boxStrokeColor="#5F2652"
+                    app:hintTextColor="#5F2652">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/vf"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="#5F2652"
+                        android:textColorHighlight="#5F2652"
+                        android:textColorHint="#5F2652"
+                        android:textColorLink="#5F2652" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/quantitascommessa"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:hint="Quantità scommessa"
+                    android:textColor="#5F2652"
+                    android:textColorHighlight="#5f2652"
+                    android:textColorHint="#5f2652"
+                    android:textColorLink="#5f2652">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/qs"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="#5F2652"
+                        android:textColorHighlight="#5F2652"
+                        android:textColorHint="#5F2652"
+                        android:textColorLink="#5F2652" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/indirizzoportafoglio"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:hint="Indirizzo portafoglio personale"
+                    app:hintTextColor="#5f2652"
+                    android:textColor="#5F2652"
+                    android:textColorHighlight="#5f2652"
+                    android:textColorHint="#5f2652"
+                    android:textColorLink="#5f2652">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/ipp"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:inputType="text"
+                        android:textColor="#5F2652"
+                        android:textColorHighlight="#5F2652"
+                        android:textColorHint="#5F2652"
+                        android:textColorLink="#5F2652" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/next_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_marginBottom="30dp"
+                    android:layout_marginTop="10dp"
+                    android:textSize="14dp"
+                    android:backgroundTint="#5f2652"
+                    android:text="Scommetti" />
+            </LinearLayout>
+
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+
+
+
+
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

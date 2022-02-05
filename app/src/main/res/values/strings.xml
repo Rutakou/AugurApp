@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">Augur</string>
+    <!-- Strings related to login -->
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Accedi</string>
+    <string name="action_sign_in_short">Accedi</string>
+    <string name="welcome">"Welcome !"</string>
+    <string name="invalid_username">Username non valido</string>
+    <string name="invalid_password">La password deve avere più di 5 caratteri</string>
+    <string name="login_failed">"Accesso fallito"</string>
+    <string name="title_activity_bet">BetActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_augur_splashpage">AugurSplashpage</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">DUMMY\nCONTENT</string>
+</resources>

@@ -1,0 +1,25 @@
+<resources>
+
+    <style name="Widget.Theme.Augur.ActionBar.Fullscreen" parent="Widget.AppCompat.ActionBar">
+        <item name="android:background">@color/black_overlay</item>
+    </style>
+
+    <style name="Widget.Theme.Augur.ButtonBar.Fullscreen" parent="">
+        <item name="android:background">@color/black_overlay</item>
+        <item name="android:buttonBarStyle">?android:attr/buttonBarStyle</item>
+    </style>
+
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">#552249</item>
+        <item name="colorPrimaryDark">#4c1e41</item>
+        <!-- <item name="colorAccent">@color/colorAccent</item>-->
+        <!-- <item name="android:textColorHighlight">@color/colorEditTextLight</item>-->
+        <!--<item name="android:textColorLink">@color/colorPrimary</item>-->
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <!--<item name="android:textColor">@color/scritta</item>-->
+        <!--<item name="android:fontFamily">@font/roboto</item>-->
+        <!--<item name = "android:panelFullBackground">@color/sfondo</item>-->
+        <!--<item name="actionOverflowMenuStyle">@style/Widget.MaterialComponents.PopupMenu.Overflow</item>-->
+    </style>
+</resources>
