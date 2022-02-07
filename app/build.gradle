@@ -40,7 +40,10 @@ dependencies {
     implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.4.0'
     implementation 'androidx.navigation:navigation-fragment:2.3.5'
     implementation 'androidx.navigation:navigation-ui:2.3.5'
-  //  implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
+
+    // ANTONIO
+    implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    //  implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
     //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.6.3'
     // implementation group: 'org.json', name: 'json', version: '20211205'
     testImplementation 'junit:junit:4.13.2'
