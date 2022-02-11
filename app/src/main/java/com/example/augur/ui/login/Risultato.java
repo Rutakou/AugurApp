@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.example.augur.R;
 import com.example.augur.databinding.ActivityRisultatoBinding;
@@ -23,6 +24,7 @@ public class Risultato extends AppCompatActivity {
         setContentView(R.layout.activity_risultato);
         final Button logoutButton = binding.bottonelogout;
 
+
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,5 +34,8 @@ public class Risultato extends AppCompatActivity {
                 finish();
             }
         });
+
+
     }
+
 }
