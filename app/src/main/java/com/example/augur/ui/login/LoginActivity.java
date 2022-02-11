@@ -126,6 +126,7 @@ public class LoginActivity extends AppCompatActivity {
                 //connection to keycloak to verify the user account
                 //I think it may be there...
                 startActivity(new Intent(getApplicationContext(), Scommessa.class));
+                overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                 finish();
             }
         });

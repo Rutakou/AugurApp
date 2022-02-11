@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.augur.R;
 import com.example.augur.databinding.ActivityLoginBinding;
 import com.example.augur.databinding.ActivityScommessaBinding;
 
@@ -26,6 +27,7 @@ public class Scommessa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 startActivity(new Intent(getApplicationContext(), Risultato.class));
+                overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                 finish();
             }
         });
