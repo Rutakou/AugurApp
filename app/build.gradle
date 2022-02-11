@@ -43,6 +43,9 @@ dependencies {
 
     // ANTONIO
     implementation 'com.amitshekhar.android:android-networking:1.0.2'
+    //ELENA
+    implementation 'com.amitshekhar.android:jackson-android-networking:1.0.2'
+    implementation 'com.facebook.stetho:stetho-okhttp3:1.5.1'
     //  implementation group: 'org.apache.httpcomponents', name: 'httpclient', version: '4.5.13'
     //implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: '2.6.3'
     // implementation group: 'org.json', name: 'json', version: '20211205'
