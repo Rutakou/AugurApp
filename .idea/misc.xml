@@ -3,6 +3,8 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/elena/StudioProjects/AugurApp/app/src/main/res/layout/activity_risultato.xml" value="0.2" />
+        <entry key="..\:/Users/elena/StudioProjects/AugurApp/app/src/main/res/layout/activity_scommessa.xml" value="0.2578125" />
         <entry key="..\:/Users/sem10/AndroidStudioProjects/Augur2/app/src/main/res/layout-w1240dp/toolbar_main.xml" value="0.2" />
         <entry key="..\:/Users/sem10/AndroidStudioProjects/Augur2/app/src/main/res/layout/activity_augur_splashpage.xml" value="0.25" />
         <entry key="..\:/Users/sem10/AndroidStudioProjects/Augur2/app/src/main/res/layout/activity_bet.xml" value="0.358695652173913" />
@@ -11,9 +13,6 @@
         <entry key="..\:/Users/sem10/AndroidStudioProjects/Augur2/app/src/main/res/layout/content_bet.xml" value="0.358695652173913" />
         <entry key="..\:/Users/sem10/AndroidStudioProjects/Augur2/app/src/main/res/layout/fragment_first.xml" value="0.33" />
         <entry key="..\:/Users/sem10/AndroidStudioProjects/Augur2/app/src/main/res/layout/fragment_second.xml" value="0.358695652173913" />
-        <entry key="..\:/Users/sem10/Documents/GitHub/AugurApp/app/src/main/res/layout/activity_login.xml" value="0.2069260367678495" />
-        <entry key="..\:/Users/sem10/Documents/GitHub/AugurApp/app/src/main/res/layout/activity_risultato.xml" value="0.22" />
-        <entry key="..\:/Users/sem10/Documents/GitHub/AugurApp/app/src/main/res/layout/activity_scommessa.xml" value="0.1514052583862194" />
       </map>
     </option>
   </component>
