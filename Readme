@@ -1,7 +1,6 @@
-TODO: Mancano le animazioni, 
-Capire le dependency per gli import della classe APIcoinmarket, 
+TODO: 
+Manca login e integrazione con Keycloak
 Manca il backpress e bottone nella toolbar, 
-Manca il logout nella toolbar, 
-Fare un altra schermata dove risporta il valore scommesso e anche se si ha vinto o meno, stampando il valore da apicoinmark.
+Manca il logout nella toolbar
 
 Cya
