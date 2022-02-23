@@ -1,31 +1,22 @@
 package com.example.augur.ui.login;
 
 
-
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.RecyclerView;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import com.androidnetworking.AndroidNetworking;
-import com.androidnetworking.common.Priority;
 import com.androidnetworking.error.ANError;
-import com.androidnetworking.interfaces.JSONArrayRequestListener;
 import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.augur.R;
-import com.example.augur.databinding.ActivityLoginBinding;
 import com.example.augur.databinding.ActivityScommessaBinding;
 import com.facebook.stetho.okhttp3.StethoInterceptor;
-import com.google.android.material.snackbar.Snackbar;
 import com.jacksonandroidnetworking.JacksonParserFactory;
 
-import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -98,6 +89,8 @@ public class Scommessa extends AppCompatActivity {
                 finish();
             }
         });
+
+        //lohout basta azzerare il token che ti porti dietro nel bundle
 
 
     }

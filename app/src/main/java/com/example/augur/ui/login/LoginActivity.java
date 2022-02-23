@@ -1,36 +1,33 @@
 package com.example.augur.ui.login;
 
-import android.app.Activity;
-
-import androidx.appcompat.widget.Toolbar;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
+import static android.content.ContentValues.TAG;
 
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
-
-import androidx.annotation.Nullable;
-import androidx.annotation.StringRes;
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.view.Window;
 
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+
+import com.androidnetworking.AndroidNetworking;
+import com.androidnetworking.error.ANError;
+import com.androidnetworking.interfaces.JSONObjectRequestListener;
 import com.example.augur.R;
-import com.example.augur.ui.login.LoginViewModel;
-import com.example.augur.ui.login.LoginViewModelFactory;
 import com.example.augur.databinding.ActivityLoginBinding;
-import com.google.android.material.textfield.TextInputLayout;
+
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -50,8 +47,6 @@ public class LoginActivity extends AppCompatActivity {
         final EditText passwordEditText = binding.pass;
         final Button loginButton = binding.button;
 
-
-
         loginViewModel.getLoginFormState().observe(this, new Observer<LoginFormState>() {
             @Override
             public void onChanged(@Nullable LoginFormState loginFormState) {
@@ -65,26 +60,6 @@ public class LoginActivity extends AppCompatActivity {
                 if (loginFormState.getPasswordError() != null) {
                     passwordEditText.setError(getString(loginFormState.getPasswordError()));
                 }
-            }
-        });
-
-        loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
-            @Override
-            public void onChanged(@Nullable LoginResult loginResult) {
-                if (loginResult == null) {
-                    return;
-                }
-
-                if (loginResult.getError() != null) {
-                    showLoginFailed(loginResult.getError());
-                }
-                if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
-                }
-                setResult(Activity.RESULT_OK);
-
-                //Complete and destroy login activity once successful
-                finish();
             }
         });
 
@@ -114,6 +89,7 @@ public class LoginActivity extends AppCompatActivity {
                 if (actionId == EditorInfo.IME_ACTION_DONE) {
                     loginViewModel.login(usernameEditText.getText().toString(),
                             passwordEditText.getText().toString());
+
                 }
                 return false;
             }
@@ -125,21 +101,59 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
                 //connection to keycloak to verify the user account
                 //I think it may be there...
-                startActivity(new Intent(getApplicationContext(), Scommessa.class));
-                overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
-                finish();
+
+                final String url = "http://10.0.2.2:8180/auth/realms/augur-application/protocol/openid-connect/token";
+
+
+                AndroidNetworking.post(url)
+                        .addHeaders("Content-Type","application/x-www-form-urlencoded")
+                        .addBodyParameter("grant_type","password")
+                        .addBodyParameter("client_id","augur-application-client")
+                        .addBodyParameter("username", usernameEditText.getText().toString())
+                        .addBodyParameter("password", passwordEditText.getText().toString())
+                        .build()
+                        .getAsJSONObject(new JSONObjectRequestListener() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                System.out.println("Risposta ricevuta");
+                                try {
+                                    String token = response.get("access_token").toString();
+                                    System.out.println(token);
+                                    System.out.println(response);
+                                    if(token!=null){
+                                        startActivity(new Intent(getApplicationContext(), Scommessa.class));
+                                        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                                        finish();
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_LONG).show();
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            @Override
+                            public void onError(ANError error) {
+                                System.out.println("Si e' verificato un errore");
+                                System.out.println(error);
+                                if (error.getErrorCode() != 0) {
+                                    // received error from server
+                                    // error.getErrorCode() - the error code from server
+                                    // error.getErrorBody() - the error body from server
+                                    // error.getErrorDetail() - just an error detail
+                                    Log.d(TAG, "onError errorCode : " + error.getErrorCode());
+                                    Log.d(TAG, "onError errorBody : " + error.getErrorBody());
+                                    Log.d(TAG, "onError errorDetail : " + error.getErrorDetail());
+                                    // get parsed error object (If ApiError is your class)
+                                    Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_LONG).show();
+                                } else {
+                                    // error.getErrorDetail() : connectionError, parseError, requestCancelledError
+                                    Log.d(TAG, "onError errorDetail : " + error.getErrorDetail());
+                                }
+                            }
+                        });
             }
         });
-    }
-
-    private void updateUiWithUser(LoggedInUserView model) {
-        //String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
-        //Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
-    }
-
-    private void showLoginFailed(@StringRes Integer errorString) {
-        Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
 
 }

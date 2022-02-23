@@ -1,16 +1,15 @@
 package com.example.augur.ui.login;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import androidx.appcompat.app.AppCompatActivity;
+
 import com.example.augur.R;
 import com.example.augur.databinding.ActivityRisultatoBinding;
-import com.example.augur.databinding.ActivityScommessaBinding;
 
 public class Risultato extends AppCompatActivity {
     private LoginViewModel loginViewModel;
@@ -53,7 +52,10 @@ public class Risultato extends AppCompatActivity {
         });
 
     }
+    //token è da salvare dall'altra activity
+    //addHeader("Bearer", token)
 
+    //E' da fare su node!!
     public void determinaRisultato(String uno, String due){
         if(uno.equals(due)==true){
             c.setText("Complimenti!");
