@@ -1,6 +1,8 @@
 TODO: 
-Manca login e integrazione con Keycloak
-Manca il backpress e bottone nella toolbar, 
-Manca il logout nella toolbar
+1. Elaborazione risultato su server keycloak: dopo autorizzazione utente,
+confronto il valore inviato dall'utente con il valore dell'api di CoinmarketBTC, sul server keycloak. 
+Activity risultato ricavera la risposta dal server keycloak.
+2. Manca il backpress e bottone nella toolbar
+3. Manca il logout nella toolbar
 
 Cya
