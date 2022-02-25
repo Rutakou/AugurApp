@@ -33,12 +33,17 @@ public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;
     private ActivityLoginBinding binding;
+    private Bundle extras;
+    private String token = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityLoginBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Intent i = new Intent(LoginActivity.this, Scommessa.class);
+        extras = new Bundle();
 
         loginViewModel = new ViewModelProvider(this, new LoginViewModelFactory())
                 .get(LoginViewModel.class);
@@ -99,11 +104,9 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 loginViewModel.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
-                //connection to keycloak to verify the user account
-                //I think it may be there...
 
+                //connection to keycloak to verify the user's account
                 final String url = "http://10.0.2.2:8180/auth/realms/augur-application/protocol/openid-connect/token";
-
 
                 AndroidNetworking.post(url)
                         .addHeaders("Content-Type","application/x-www-form-urlencoded")
@@ -117,11 +120,15 @@ public class LoginActivity extends AppCompatActivity {
                             public void onResponse(JSONObject response) {
                                 System.out.println("Risposta ricevuta");
                                 try {
-                                    String token = response.get("access_token").toString();
+                                    token = response.get("access_token").toString();
+                                    //Boundle da trasferire
+                                    extras.putString("access_token", token);
+
                                     System.out.println(token);
                                     System.out.println(response);
                                     if(token!=null){
-                                        startActivity(new Intent(getApplicationContext(), Scommessa.class));
+                                        i.putExtras(extras);
+                                        startActivity(i);
                                         overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
                                         finish();
                                     }else{
