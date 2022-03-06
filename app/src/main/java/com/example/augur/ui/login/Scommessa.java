@@ -54,7 +54,7 @@ public class Scommessa extends AppCompatActivity {
         final Button scommettiButton = binding.nextButton;
 
         System.out.println("Sto inviando la richiesta");
-        final String url = "http://10.0.2.2:3000/";
+        final String url = "http://192.168.1.249:3000/";
 
         AndroidNetworking.get(url).build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
@@ -66,6 +66,7 @@ public class Scommessa extends AppCompatActivity {
                             rispostaDouble = Double.parseDouble(risposta);
                             rispostaDouble = Math.round(rispostaDouble*100.0)/100.0;
                             risposta = String.valueOf(rispostaDouble);
+                            System.out.println(risposta);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -95,7 +96,7 @@ public class Scommessa extends AppCompatActivity {
             }
         });
 
-        //lohout basta azzerare il token che ti porti dietro nel bundle
+        //logout basta azzerare il token che ti porti dietro nel bundle
 
 
     }

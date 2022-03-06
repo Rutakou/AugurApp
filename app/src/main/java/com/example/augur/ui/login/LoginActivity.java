@@ -106,7 +106,7 @@ public class LoginActivity extends AppCompatActivity {
                 loginViewModel.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
 
                 //connection to keycloak to verify the user's account
-                final String url = "http://10.0.2.2:8180/auth/realms/augur-application/protocol/openid-connect/token";
+                final String url = "http://192.168.1.249:8080/realms/augur-application/protocol/openid-connect/token";
 
                 AndroidNetworking.post(url)
                         .addHeaders("Content-Type","application/x-www-form-urlencoded")

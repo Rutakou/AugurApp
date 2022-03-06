@@ -58,13 +58,12 @@ public class Risultato extends AppCompatActivity {
         c3.setText(value);
 
         //invio al server scommessa e valore futuro. Il messaggio restituito sarà la stringa da assegnare alla TextView
-        final String url1 = "http://10.0.2.2:4000/risultato";
+        final String url1 = "http://192.168.1.249:4000/risultato";
 
         AndroidNetworking.post(url1)
-                .addHeaders("Authorization", "Bearer token")
+                .addHeaders("Authorization", "Bearer " + access_token)
                 .addBodyParameter("scommessa", value1)
                 .addBodyParameter("valorefuturo", value)
-                .addBodyParameter("access_token",access_token)
                 .build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
@@ -110,6 +109,5 @@ public class Risultato extends AppCompatActivity {
                 finish();
             }
         });
-
     }
 }
