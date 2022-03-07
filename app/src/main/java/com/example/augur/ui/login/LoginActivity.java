@@ -105,7 +105,7 @@ public class LoginActivity extends AppCompatActivity {
             public void onClick(View v) {
                 loginViewModel.login(usernameEditText.getText().toString(), passwordEditText.getText().toString());
 
-                //connection to keycloak to verify the user's account
+                //Richiesta del token al server Keycloak
                 final String url = "http://192.168.1.249:8080/realms/augur-application/protocol/openid-connect/token";
 
                 AndroidNetworking.post(url)
@@ -123,10 +123,8 @@ public class LoginActivity extends AppCompatActivity {
                                     token = response.get("access_token").toString();
                                     //Boundle da trasferire
                                     extras.putString("access_token", token);
-
-                                    System.out.println(token);
-                                    System.out.println(response);
                                     if(token!=null){
+                                        //trasferimento boundle all'intent
                                         i.putExtras(extras);
                                         startActivity(i);
                                         overridePendingTransition(R.anim.activity_in, R.anim.activity_out);

@@ -44,7 +44,7 @@ public class Scommessa extends AppCompatActivity {
         Bundle extras = new Bundle();
         b = getIntent().getExtras();
         token = b.getString("access_token");
-        // Adding an Network Interceptor for Debugging purpose :
+
         OkHttpClient okHttpClient = new OkHttpClient() .newBuilder()
                 .addNetworkInterceptor(new StethoInterceptor())
                         .build();
@@ -55,7 +55,7 @@ public class Scommessa extends AppCompatActivity {
 
         System.out.println("Sto inviando la richiesta");
         final String url = "http://192.168.1.249:3000/";
-
+        //Richiesta del prezzo di BTC all'API in Node.js
         AndroidNetworking.get(url).build()
                 .getAsJSONObject(new JSONObjectRequestListener() {
                     @Override
@@ -66,12 +66,10 @@ public class Scommessa extends AppCompatActivity {
                             rispostaDouble = Double.parseDouble(risposta);
                             rispostaDouble = Math.round(rispostaDouble*100.0)/100.0;
                             risposta = String.valueOf(rispostaDouble);
-                            System.out.println(risposta);
+                            //System.out.println(risposta);
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
-                        //System.out.println(response);
-
                     }
                     @Override
                     public void onError(ANError error) {
@@ -95,10 +93,6 @@ public class Scommessa extends AppCompatActivity {
                 finish();
             }
         });
-
-        //logout basta azzerare il token che ti porti dietro nel bundle
-
-
     }
 
 }

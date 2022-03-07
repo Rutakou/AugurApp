@@ -39,17 +39,13 @@ public class Risultato extends AppCompatActivity {
         setContentView(R.layout.activity_risultato);
         final Button logoutButton = binding.bottonelogout;
 
-
         extras = getIntent().getExtras();
-
         c = findViewById(R.id.complimenti);
-
         access_token = extras.getString("access_token");
-        System.out.println(access_token);
+
         if (extras != null) {
             value = extras.getString("risposta");
             value1 = extras.getString("valorefuturo");
-            //The key argument here must match that used in the other activity
         }
         c2 = findViewById(R.id.scommessafatta);
         System.out.print(value1);
@@ -57,7 +53,7 @@ public class Risultato extends AppCompatActivity {
         c2.setText(value1);
         c3.setText(value);
 
-        //invio al server scommessa e valore futuro. Il messaggio restituito sarà la stringa da assegnare alla TextView
+        //Invio al server scommessa e valore futuro. Il messaggio restituito dal server in risposta sarà la stringa da assegnare alla TextView
         final String url1 = "http://192.168.1.249:4000/risultato";
 
         AndroidNetworking.post(url1)
@@ -100,7 +96,7 @@ public class Risultato extends AppCompatActivity {
         logoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //token salvato nel bundle. Logout, imposto il token a null
+                //Token salvato nel bundle. Logout, imposto il token a null
                 Bundle bundle = new Bundle();
                 Intent i = new Intent(Risultato.this, LoginActivity.class);
                 bundle.putString("access_token", null);
