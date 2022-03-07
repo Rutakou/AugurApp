@@ -15,8 +15,8 @@
         android:layout_marginBottom="40dp"
         android:orientation="vertical">
         <ImageView
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="140dp"
+            android:layout_height="140dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="40dp"
             android:layout_marginBottom="16dp"
@@ -27,7 +27,7 @@
             android:id="@+id/cardProf"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
+            android:layout_marginTop="6dp"
             app:cardUseCompatPadding="true"
             app:cardCornerRadius="4dp"
             app:cardElevation="5dp"
@@ -35,70 +35,81 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_gravity="center"
                 android:layout_marginTop="20dp"
                 android:orientation="vertical">
 
                 <LinearLayout
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_gravity="center"
                     android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:layout_marginStart="4dp">
+                    android:padding="8dp">
 
                     <TextView
                         android:id="@+id/haiscommesso"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
+                        android:layout_gravity="center"
                         android:layout_marginTop="2dp"
                         android:text="Hai scommesso"
                         android:textColor="#5F2652"
                         android:textColorHighlight="#5f2652"
                         android:textColorHint="#5f2652"
                         android:textColorLink="#5f2652"
-                        android:textSize="15sp" />
+                        android:textSize="18sp" />
+                </LinearLayout>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="8dp">
                     <TextView
                         android:id="@+id/scommessafatta"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="9dp"
                         android:textAppearance="?attr/textAppearanceBody2"
                         android:textColor="?android:attr/textColorSecondary"
                         android:layout_marginTop="2dp"
-                        android:text="scommessa" />
+                        android:text="scommessa"
+                        android:textSize="14sp" />
                 </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:padding="8dp"
-                    android:layout_marginStart="4dp">
-
-                    <TextView
-                        android:id="@+id/risultatocoinmarket"
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginTop="2dp"
-                        android:text="Valore di bitcoin"
-                        android:textColor="#5F2652"
-                        android:textColorHighlight="#5f2652"
-                        android:textColorHint="#5f2652"
-                        android:textColorLink="#5f2652"
-                        android:textSize="15sp" />
-                    <TextView
-                        android:id="@+id/scommessafattaora"
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <TextView
+                            android:id="@+id/risultatocoinmarket"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Valore di bitcoin"
+                            android:textColor="#5F2652"
+                            android:textColorHighlight="#5f2652"
+                            android:textColorHint="#5f2652"
+                            android:textColorLink="#5f2652"
+                            android:textSize="18sp" />
+                    </LinearLayout>
+                    <LinearLayout
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:layout_marginEnd="9dp"
-                        android:textAppearance="?attr/textAppearanceBody2"
-                        android:textColor="?android:attr/textColorSecondary"
-                        android:layout_marginTop="2dp"
-                        android:text="Valore coinmark" />
-                </LinearLayout>
+                        android:layout_height="match_parent"
+                        android:layout_gravity="center"
+                        android:orientation="horizontal"
+                        android:padding="8dp">
+                        <TextView
+                            android:id="@+id/scommessafattaora"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textAppearance="?attr/textAppearanceBody2"
+                            android:textColor="?android:attr/textColorSecondary"
+                            android:layout_marginTop="2dp"
+                            android:textSize="14sp"
+                            android:text="Valore coinmark" />
+                    </LinearLayout>
+
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -120,18 +131,37 @@
                         android:textColorHint="#5f2652"
                         android:textColorLink="#5f2652"
                         android:textSize="20sp" />
-
                 </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:layout_gravity="center">
+
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/bottonelogout"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center_horizontal"
                     android:layout_marginTop="10dp"
+                    android:layout_marginLeft="20dp"
                     android:layout_marginBottom="30dp"
                     android:backgroundTint="#5f2652"
                     android:text="Logout"
                     android:textSize="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/bottoneritenta"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="80dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginBottom="30dp"
+                    android:backgroundTint="#5f2652"
+                    android:text="Ritenta"
+                    android:textSize="14dp" />
+            </LinearLayout>
             </LinearLayout>
 
         </com.google.android.material.card.MaterialCardView>

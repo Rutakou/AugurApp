@@ -38,6 +38,7 @@ public class Risultato extends AppCompatActivity {
         binding = ActivityRisultatoBinding.inflate(getLayoutInflater());
         setContentView(R.layout.activity_risultato);
         final Button logoutButton = binding.bottonelogout;
+        final Button ritentaButton = binding.bottoneritenta;
 
         extras = getIntent().getExtras();
         c = findViewById(R.id.complimenti);
@@ -98,8 +99,18 @@ public class Risultato extends AppCompatActivity {
             public void onClick(View v) {
                 //Token salvato nel bundle. Logout, imposto il token a null
                 Bundle bundle = new Bundle();
-                Intent i = new Intent(Risultato.this, LoginActivity.class);
                 bundle.putString("access_token", null);
+                Intent i = new Intent(Risultato.this, LoginActivity.class);
+                startActivity(i);
+                overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
+                finish();
+            }
+        });
+        ritentaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Bundle bundle = new Bundle();
+                Intent i = new Intent(Risultato.this, Scommessa.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
                 finish();
