@@ -35,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
     private ActivityLoginBinding binding;
     private Bundle extras;
     private String token = null;
+    private String refresh_token = null;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -121,8 +122,10 @@ public class LoginActivity extends AppCompatActivity {
                                 System.out.println("Risposta ricevuta");
                                 try {
                                     token = response.get("access_token").toString();
+                                    refresh_token = response.get("refresh_token").toString();
                                     //Boundle da trasferire
                                     extras.putString("access_token", token);
+                                    extras.putString("refresh_token", refresh_token);
                                     if(token!=null){
                                         //trasferimento boundle all'intent
                                         i.putExtras(extras);

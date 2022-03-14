@@ -29,10 +29,10 @@ public class Scommessa extends AppCompatActivity {
     private String risposta;
     private double rispostaDouble;
     private String valorefuturo;
-    private String quantitascommessa;
-    private String indirizzoportafoglio;
     private Bundle b;
+    private Bundle b2;
     private String token;
+    private String refresh_token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +44,7 @@ public class Scommessa extends AppCompatActivity {
         Bundle extras = new Bundle();
         b = getIntent().getExtras();
         token = b.getString("access_token");
+        refresh_token = b.getString("refresh_token");
 
         OkHttpClient okHttpClient = new OkHttpClient() .newBuilder()
                 .addNetworkInterceptor(new StethoInterceptor())
@@ -82,11 +83,10 @@ public class Scommessa extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 valorefuturo = binding.vf.getText().toString();
-                quantitascommessa = binding.qs.getText().toString();
-                indirizzoportafoglio = binding.ipp.getText().toString();
                 extras.putString("risposta", risposta);
                 extras.putString("valorefuturo", valorefuturo);
                 extras.putString("access_token", token);
+                extras.putString("refresh_token", refresh_token);
                 i.putExtras(extras);
                 startActivity(i);
                 overridePendingTransition(R.anim.activity_in, R.anim.activity_out);

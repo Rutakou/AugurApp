@@ -63,53 +63,6 @@
                         android:textColorLink="#5F2652" />
                 </com.google.android.material.textfield.TextInputLayout>
 
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/quantitascommessa"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:hint="Quantità scommessa"
-                    android:textColor="#5F2652"
-                    android:textColorHighlight="#5f2652"
-                    android:textColorHint="#5f2652"
-                    android:textColorLink="#5f2652">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/qs"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textColor="#5F2652"
-                        android:textColorHighlight="#5F2652"
-                        android:textColorHint="#5F2652"
-                        android:textColorLink="#5F2652" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <com.google.android.material.textfield.TextInputLayout
-                    android:id="@+id/indirizzoportafoglio"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="10dp"
-                    android:hint="Indirizzo portafoglio personale"
-                    app:hintTextColor="#5f2652"
-                    android:textColor="#5F2652"
-                    android:textColorHighlight="#5f2652"
-                    android:textColorHint="#5f2652"
-                    android:textColorLink="#5f2652">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/ipp"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="text"
-                        android:textColor="#5F2652"
-                        android:textColorHighlight="#5F2652"
-                        android:textColorHint="#5F2652"
-                        android:textColorLink="#5F2652" />
-                </com.google.android.material.textfield.TextInputLayout>
-
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/next_button"
                     android:layout_width="wrap_content"
@@ -124,10 +77,4 @@
 
         </com.google.android.material.card.MaterialCardView>
     </LinearLayout>
-
-
-
-
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -31,17 +32,20 @@ public class Risultato extends AppCompatActivity {
     private String value1;
     private String access_token;
     private String messaggio;
+    private String refresh_token;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         binding = ActivityRisultatoBinding.inflate(getLayoutInflater());
-        setContentView(R.layout.activity_risultato);
+        setContentView(binding.getRoot());
         final Button logoutButton = binding.bottonelogout;
+        final Button ritentaButton = binding.bottoneritenta;
 
         extras = getIntent().getExtras();
         c = findViewById(R.id.complimenti);
         access_token = extras.getString("access_token");
+        refresh_token = extras.getString("refresh_token");
 
         if (extras != null) {
             value = extras.getString("risposta");
@@ -98,11 +102,71 @@ public class Risultato extends AppCompatActivity {
             public void onClick(View v) {
                 //Token salvato nel bundle. Logout, imposto il token a null
                 Bundle bundle = new Bundle();
-                Intent i = new Intent(Risultato.this, LoginActivity.class);
                 bundle.putString("access_token", null);
+                Intent i = new Intent(Risultato.this, LoginActivity.class);
                 startActivity(i);
                 overridePendingTransition(R.anim.activity_back_in, R.anim.activity_back_out);
                 finish();
+            }
+        });
+
+        Bundle bundle = new Bundle();
+        Intent i = new Intent(Risultato.this, Scommessa.class);
+
+        ritentaButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                final String url = "http://192.168.1.249:8080/realms/augur-application/protocol/openid-connect/token";
+
+                AndroidNetworking.post(url)
+                        .addHeaders("Content-Type","application/x-www-form-urlencoded")
+                        .addBodyParameter("grant_type","refresh_token")
+                        .addBodyParameter("refresh_token", refresh_token)
+                        .addBodyParameter("client_id","augur-application-client")
+                        .build()
+                        .getAsJSONObject(new JSONObjectRequestListener() {
+                            @Override
+                            public void onResponse(JSONObject response) {
+                                System.out.println("Risposta ricevuta");
+                                try {
+                                    refresh_token = response.get("refresh_token").toString();
+                                    //Boundle da trasferire
+                                    extras.putString("refresh_token", refresh_token);
+                                    if(refresh_token!=null){
+                                        //trasferimento boundle all'intent
+                                        i.putExtras(extras);
+                                        startActivity(i);
+                                        overridePendingTransition(R.anim.activity_in, R.anim.activity_out);
+                                        finish();
+                                    }else{
+                                        Toast.makeText(getApplicationContext(), "Non posso elaborare la richiesta", Toast.LENGTH_LONG).show();
+                                    }
+
+                                } catch (JSONException e) {
+                                    e.printStackTrace();
+                                }
+                            }
+                            @Override
+                            public void onError(ANError error) {
+                                System.out.println("Si e' verificato un errore");
+                                System.out.println(error);
+                                if (error.getErrorCode() != 0) {
+                                    // received error from server
+                                    // error.getErrorCode() - the error code from server
+                                    // error.getErrorBody() - the error body from server
+                                    // error.getErrorDetail() - just an error detail
+                                    Log.d(TAG, "onError errorCode : " + error.getErrorCode());
+                                    Log.d(TAG, "onError errorBody : " + error.getErrorBody());
+                                    Log.d(TAG, "onError errorDetail : " + error.getErrorDetail());
+                                    // get parsed error object (If ApiError is your class)
+                                    Toast.makeText(getApplicationContext(), "Login failed", Toast.LENGTH_LONG).show();
+                                } else {
+                                    // error.getErrorDetail() : connectionError, parseError, requestCancelledError
+                                    Log.d(TAG, "onError errorDetail : " + error.getErrorDetail());
+                                }
+                            }
+                        });
             }
         });
     }
